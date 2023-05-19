@@ -1,0 +1,285 @@
+<style>
+  body{
+    overflow-y: hidden;
+  }
+    .maincontainer{
+        display: flex;
+        justify-content: center;
+        /* background:#079992; */
+        background-image: url('/images/greenbg2.jpg');
+        background-size: cover;
+        
+        height: 100vh;
+    }
+    .root{
+        width: 1300px;
+        height: auto;
+        background: #f1f2f6;
+        padding: 18px;
+        justify-content: center;
+    }
+    .heading{
+        color: #078888;
+        font-size: 36px;
+        font-weight: bold;
+        font-family: 'Tiro Telugu', serif;
+        display: flex;
+        justify-content: center;
+        padding: 6px;
+    }
+    </style>
+    
+    <html>
+        <head>
+            <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&family=Tiro+Telugu&display=swap" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css2?family=Oxygen&family=Roboto:ital,wght@1,300&display=swap" rel="stylesheet">
+     <!-- Compiled and minified CSS -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    
+     <!-- Compiled and minified JavaScript -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+     <script type="text/javascript" src="js/materialize.min.js"></script>
+             
+        <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet'>
+    
+         <!--Import Google Icon Font-->
+          <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+          <!--Import materialize.css-->
+          <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    
+          <!--Let browser know website is optimized for mobile-->
+          <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+          <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+          <script>$(document).ready(function(){
+            $('select').formSelect();
+          });</script>
+    
+          <script>$(document).ready(function(){
+            $('.timepicker').timepicker();
+          });</script>
+    
+          <script src="/javascripts/project.js"></script>
+    
+          <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+                
+        </head>
+    
+        <body>
+          <form action="/flight/editdeleterecord" method="post">
+            <div class="maincontainer">
+               <div class="root">
+                <div class="heading">
+                   <span><img src="/images/airindia.png" width="55" alt="airindia" srcset=""></span> Flight Enquiry System
+                </div>
+                <hr><br><br>
+                <div class="row">
+                    <div class="col s6">
+                        <div class="input-field">
+                            <i class="material-icons prefix">flight</i>
+                            <input id="icon_fid" name="flightid" value="<%=data.flightid %>" type="text" class="validate" readonly="true">
+                            <label for="icon_fid">flight ID</label>
+                        </div>
+                    </div>
+                        <div class="col s6">
+                        <div class="input-field">
+                            <i class="material-icons prefix">business</i>
+                            <input id="icon_companyname" name="companyname" value="<%=data.companyname %>" type="text" class="validate">
+                            <label for="icon_companyname">Company Name</label>
+                        </div>
+                        </div>
+                </div>
+                <div class="row">
+                    <div class="col s3">
+                          <div class="input-field">
+                            <i class="material-icons prefix">flight_takeoff</i>
+                            <select name="sourcestate" id="sourcestate">
+                           <option value="<%=data.sourcestateid %>"  selected><%=data.ss%></option>
+                           </select>
+                           <label>Source State</label>
+                        </div>
+                    </div>
+                        <div class="col s3">
+                        <div class="input-field">
+                            <i class="material-icons prefix">flight_takeoff</i>
+                            <select name="sourcecity" id="sourcecity">
+                              <option value="<%= data.sourcecityid %>"  selected><%= data.sc %></option>
+                              </select>
+                              <label>Source City</label>
+                        </div>
+                        </div>
+                    <div class="col s3">
+                        <div class="input-field">
+                            <i class="material-icons prefix">flight_land</i>
+                            <select name="desstate" id="desstate">
+                              <option value="<%=data.destinationstateid %>"  selected><%= data.ds%></option>
+                              </select>
+                              <label>Destination State</label>
+                        </div>
+                    </div>
+                        <div class="col s3">
+                        <div class="input-field">
+                            <i class="material-icons prefix">flight_land</i>
+                            <select name="descity" id="descity">
+                              <option value="<%=data.destinationcityid %>"  selected><%= data.dc%></option>
+                              </select>
+                              <label>Destination City</label>
+                        </div>
+                        </div>
+                </div>
+               
+                <div class="row">
+                    <div class="col s3">
+                      <div class="input-field">
+                        <i class="material-icons prefix">wrap_text</i>
+                       <select name="status" id="status">
+                      <option value="<%=data.status%>"  selected><%=data.status%></option>
+                      <option>Non-Stop</option>
+                      <option>With Stop</option>
+                      </select>
+                      <label>Status</label>
+                      </div>
+                    </div>
+                    <% var tclass=data.flightclass.split('#')
+                        var ts=['','','']
+                    for(i=0;i<tclass.length;i++){
+                        if(tclass[i]=='Buisness'){
+                            ts[0]='checked'
+                        }
+                        if(tclass[i]=='Economy'){
+                            ts[1]='checked'
+                        }
+                        if(tclass[i]=='Executive'){
+                            ts[2]='checked'
+                        }
+                    }
+
+                    %>
+                    <div class="col s3" style="display: flex;flex-direction: row;justify-content:space-around ;align-items: center;">
+                        <span>
+                            <label>
+                              <input name="fclass" value="Buisness" type="checkbox" <%=ts[0]%>   />
+                              <span>Buisness</span>
+                            </label>
+                        </span>
+
+                          <span>
+                            <label>
+                              <input name="fclass" value="Economy" type="checkbox" <%=ts[1]%> />
+                              <span>Economy</span>
+                            </label>
+                        </span>
+                          <span>
+                            <label>
+                              <input name="fclass" value="Executive" type="checkbox" <%=ts[2]%> />
+                              <span>Executive</span>
+                            </label>
+                        </span>
+                    </div>
+    
+                    <div class="col s3">
+                        <div class="input-field">
+                            <i class="material-icons prefix">access_time</i>
+                            <input id="icon_sourcetime" value="<%=data.sourcetiming%>" name="sourcetime" type="text" class="timepicker">
+                            <label for="icon_sourcetime">Source timing</label>
+                        </div>
+                    </div>
+                    <div class="col s3">
+                        <div class="input-field">
+                            <i class="material-icons prefix">access_time</i>
+                            <input id="icon_destime" value="<%=data.destinationtiming%>"name="destime" type="text" class="timepicker">
+                            <label for="icon_destime">Destination timing</label>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="row">
+                <div class="col s12" style="display: flex;flex-direction: row;justify-content:space-around ;align-items: center;">
+                    <span>
+                        <label>
+                          <input name="fdays" value="Sunday" type="checkbox" <%= data.days.includes('Sunday')?'checked':'' %> />
+                          <span>Sunday</span>
+                        </label>
+                    </span>
+                      <span>
+                        <label>
+                          <input name="fdays"value="Monday" type="checkbox" <%= data.days.includes('Monday')?'checked':'' %>/>
+                          <span>Monday</span>
+                        </label>
+                    </span>
+                      <span>
+                        <label>
+                          <input name="fdays" value="Tuesday" type="checkbox" <%= data.days.includes('Tuesday')?'checked':'' %>/>
+                          <span>Tuesday</span>
+                        </label>
+                    </span>
+                      <span>
+                        <label>
+                          <input name="fdays" value="Wednesday" type="checkbox" <%= data.days.includes('Wednesday')?'checked':'' %>/>
+                          <span>Wednesday</span>
+                        </label>
+                    </span>
+                      <span>
+                        <label>
+                          <input name="fdays" value="Thursday" type="checkbox" <%= data.days.includes('Thursday')?'checked':'' %>/>
+                          <span>Thursday</span>
+                        </label>
+                    </span>
+                      <span>
+                        <label>
+                          <input name="fdays" value="Friday" type="checkbox" <%= data.days.includes('Friday')?'checked':'' %>/>
+                          <span>friday</span>
+                        </label>
+                    </span>
+                      <span>
+                        <label>
+                          <input name="fdays" value="Saturday" type="checkbox" <%= data.days.includes('Saturday')?'checked':'' %>/>
+                          <span>Saturday</span>
+                        </label>
+                    </span>
+                    
+                </div>
+            </div>
+            <br><br>
+    
+    
+            <div class="row">
+              <div class="col s4" style='display:flex; justify-content:center;'>
+                <button class="btn waves-effect waves-light" type="submit" name="btn" value="Edit">Edit
+                  <i class="material-icons right">send</i>
+                </button>
+              </div>
+              <div class="col s4" style='display:flex; justify-content:center; font-size: 24;font-weight: bold;'>
+                
+              </div>
+              <div class="col s4" style='display:flex; justify-content:center;'>
+                <button class="btn waves-effect waves-light" type="submit" name="btn" value="Delete">Delete
+                  <i class="material-icons right">remove</i>
+                </button>
+              </div>
+            </div>
+    
+    
+    
+               </div> 
+            </div>
+          </form>
+            
+        </body>
+        <!-- Compiled and minified CSS
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
+    
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+                
+    
+    
+         <!-- Compiled and minified JavaScript -->
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+         <script type="text/javascript" src="js/materialize.min.js"></script>
+        
+    </html>

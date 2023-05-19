@@ -1,0 +1,127 @@
+<style>
+    body{
+        overflow-y: hidden;
+    }
+    .maincontainer{
+        display: flex;
+        justify-content: center;
+        /* background:#079992; */
+        background-image: url('/images/greenbg2.jpg');
+        background: size 100vw;
+        background-repeat:repeat;
+        
+        height: 100vh;
+    }
+    .root{
+        width: 1300px;
+        height: auto;
+        background:#fff;
+        padding: 18px;
+    }
+    .heading{
+        color: #078888;
+        font-size: 36px;
+        font-weight: bold;
+        font-family: 'Tiro Telugu', serif;
+        display: flex;
+        justify-content: center;
+        padding: 6px;
+    }
+    </style>
+    
+    <html>
+        <head>
+            <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&family=Tiro+Telugu&display=swap" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css2?family=Oxygen&family=Roboto:ital,wght@1,300&display=swap" rel="stylesheet">
+     <!-- Compiled and minified CSS -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    
+     <!-- Compiled and minified JavaScript -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+     <script type="text/javascript" src="js/materialize.min.js"></script>
+             
+        <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet'>
+    
+         <!--Import Google Icon Font-->
+          <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+          <!--Import materialize.css-->
+          <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    
+          <!--Let browser know website is optimized for mobile-->
+          <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+        </head>
+        <body>
+            <div class="maincontainer">
+                <div class="root">
+                    <div class="heading">
+                        <span><img src="/images/airindia.png" width="55" alt="airindia" srcset=""></span> Flight Enquiry System
+                     </div>
+                     <hr>
+                     <table class="striped">
+                        <thead>
+                          <tr>
+                              <th>Flight ID</th>
+                              <th>Company Name</th>
+                              <th>Source</th>
+                              <th>Destination</th>
+                              <th>Type</th>
+                              <th>Class</th>
+                              <th>Days</th>
+                              <th>Update</th>
+                          </tr>
+                        </thead>
+                
+                        <tbody>
+                            <% data.map((item)=>{ %>
+                          <tr>
+                            <td><%=item.flightid %></td>
+                            <th><%=item.companyname %> <br>
+                                <a href="/flight/showpicture?flightid=<%=item.flightid%>&companyname=<%=item.companyname %>&logo=<%=item.logo %>">
+                            <img src="/images/<%=item.logo%>" alt="company logo" width="55"></a></th>
+                            <td><%=item.sc %> <br><%=item.sourcetiming %></td>
+                            <td><%=item.dc %> <br><%=item.destinationtiming %></td>
+                            <td><%=item.status %> </td>
+                            <td><%=item.flightclass %> </td>
+                            <td><%=item.days %> </td>
+                            <td><a href="/flight/displaybyid?flightid=<%=item.flightid %>">Update</a> </td>
+                          </tr>
+                          <% }) %>
+                          
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+        </body>
+    </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
