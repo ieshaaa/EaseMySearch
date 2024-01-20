@@ -1,0 +1,146 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Oswald:wght@600&family=Patua+One&family=Roboto:ital,wght@1,300&family=Tiro+Telugu&family=Yeseva+One&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family:'Lato', sans-serif; ;
+}
+.maincontainer{
+    width: 100vw;
+    height:100vh;
+    background-image: url("/images/bg2.avif");
+    background-position: center;
+    background-repeat: no-repeat;
+   background-size: cover;
+}
+
+.navbar-fixed{
+    background-color: rgba(255, 255, 255, 0.522);
+}
+
+
+
+.container{
+    box-sizing: border-box;
+   margin:  0 auto;
+    position: absolute; 
+   top: 50%;
+   right: 40%;
+   transform: translateY(-50%);
+   padding: 10px 40px;
+   background-color: #ffffff85 ;
+   border-radius: 8px; 
+   box-shadow: 2px 2px 5px #063554;
+   
+}
+
+.heading h1{
+    font-size: 3rem;
+    color: #212121;
+    font-weight: 500;
+    text-align: center;
+    font-weight: bold;
+}
+.heading p{
+    font-size: 2rem;
+    color: #555;
+    text-align: center;
+}
+.main{
+    margin: 20px 0;
+}
+
+.main div{
+    margin: 10px 0;
+}
+
+.main div input{
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #cccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    margin-top: 4px;
+
+}
+
+</style>
+    
+    <html>
+        <head>
+     <!-- Compiled and minified CSS -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    
+     <!-- Compiled and minified JavaScript -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+     <script type="text/javascript" src="/public/js/materialize.min.js"></script>
+             
+        <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet'>
+    
+         <!--Import Google Icon Font-->
+          <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+          <!--Import materialize.css-->
+          <link type="text/css" rel="stylesheet" href="/public/css/materialize.min.css"  media="screen,projection"/>
+    
+          <!--Let browser know website is optimized for mobile-->
+          <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+          <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+         
+        </head>
+    
+        <body>
+            <div class="maincontainer">
+                <nav class="navbar-fixed">
+                    <a href="#!" class="brand-logo left"><i class="material-icons" style="font-size:38;margin-left:25px">flight_takeoff</i>EaseMySearch</a>
+                </nav>
+                <div class="container" style="width: 30rem;">
+                 
+                    
+                    <div class="heading">
+                        <h1>Flight Enquiry</h1>
+                        <p>Admin Login</p>
+                    </div>
+                    <form action="/admin/checkadminlogin" method="post" >
+        
+                     <div class="main">
+                     <div class="row">
+                         <div class="col s12">
+                             <div class="input-field">
+                                 <i class="material-icons prefix">email</i>
+                                 <input id="icon_femail" name="emailid" type="email" class="validate">
+                                 <label for="icon_femail">Email</label>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="row">
+                         <div class="col s12">
+                             <div class="input-field">
+                                 <i class="material-icons prefix">lock</i>
+                                 <input id="icon_fpass" name="password" type="password" class="validate">
+                                 <label for="icon_fpass">Password</label>
+                             </div>
+                         </div>
+                     </div> 
+                     <div class="row">
+                         <div class="col s4" >
+                             <button class="btn waves-effect waves-light" type="submit" name="action">Login
+                               <i class="material-icons right">send</i>
+                             </button>
+                           </div> 
+                           <div class="col s8" >
+                             <h6><b style="color: crimson;"><%=msg%></b></h6>
+                     </div>
+                     </div>
+                    </div>   
+                 </form>
+                </div>
+             </div>
+            
+    </body>
+    </html>
