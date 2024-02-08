@@ -1,26 +1,37 @@
 <style>
   body{
     overflow-y: hidden;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
     .maincontainer{
         display: flex;
         justify-content: center;
         /* background:#079992; */
-        background-image: url('/images/greenbg2.jpg');
-        background-size: cover;
-        
-        height: 100vh;
+        background-image: url('/images/bg7.avif') ;
+    background-size:cover;
+    z-index: 100000;
+    height: 100%;
+    overflow-y: auto;
     }
     .root{
-        width: 1300px;
-        height: auto;
-        background: #f1f2f6;
-        padding: 18px;
-        justify-content: center;
+      max-width: 850px;
+  width: 90%;
+    height: 100%;
+    background: #f1f2f6;
+    padding: 25px;
+    padding-bottom: 60px;
+    justify-content: center;
+    overflow-x: hidden;
+    z-index: 10000000;
+    scrollbar-width: thin;
+    scroll-behavior: smooth;
+    scrollbar-color: #078888 transparent;
     }
     .heading{
         color: #078888;
-        font-size: 36px;
+        font-size: 30px;
         font-weight: bold;
         font-family: 'Tiro Telugu', serif;
         display: flex;
@@ -78,14 +89,14 @@
                 </div>
                 <hr><br><br>
                 <div class="row">
-                    <div class="col s6">
+                    <div class="col s12 m6">
                         <div class="input-field">
                             <i class="material-icons prefix">flight</i>
                             <input id="icon_fid" name="flightid" value="<%=data.flightid %>" type="text" class="validate" readonly="true">
                             <label for="icon_fid">flight ID</label>
                         </div>
                     </div>
-                        <div class="col s6">
+                        <div class="col s12 m6">
                         <div class="input-field">
                             <i class="material-icons prefix">business</i>
                             <input id="icon_companyname" name="companyname" value="<%=data.companyname %>" type="text" class="validate">
@@ -94,7 +105,7 @@
                         </div>
                 </div>
                 <div class="row">
-                    <div class="col s3">
+                    <div class="col s12 m6">
                           <div class="input-field">
                             <i class="material-icons prefix">flight_takeoff</i>
                             <select name="sourcestate" id="sourcestate">
@@ -103,7 +114,7 @@
                            <label>Source State</label>
                         </div>
                     </div>
-                        <div class="col s3">
+                        <div class="col s12 m6">
                         <div class="input-field">
                             <i class="material-icons prefix">flight_takeoff</i>
                             <select name="sourcecity" id="sourcecity">
@@ -112,7 +123,7 @@
                               <label>Source City</label>
                         </div>
                         </div>
-                    <div class="col s3">
+                    <div class="col s12 m6">
                         <div class="input-field">
                             <i class="material-icons prefix">flight_land</i>
                             <select name="desstate" id="desstate">
@@ -121,7 +132,7 @@
                               <label>Destination State</label>
                         </div>
                     </div>
-                        <div class="col s3">
+                        <div class="col s12 m6">
                         <div class="input-field">
                             <i class="material-icons prefix">flight_land</i>
                             <select name="descity" id="descity">
@@ -133,7 +144,7 @@
                 </div>
                
                 <div class="row">
-                    <div class="col s3">
+                    <div class="col s12 m6">
                       <div class="input-field">
                         <i class="material-icons prefix">wrap_text</i>
                        <select name="status" id="status">
@@ -144,7 +155,7 @@
                       <label>Status</label>
                       </div>
                     </div>
-                    <% var tclass=data.flightclass.split('#')
+                    <% var tclass=data.flightclass.split(',')
                         var ts=['','','']
                     for(i=0;i<tclass.length;i++){
                         if(tclass[i]=='Buisness'){
@@ -159,7 +170,8 @@
                     }
 
                     %>
-                    <div class="col s3" style="display: flex;flex-direction: row;justify-content:space-around ;align-items: center;">
+                    <div class="col s12 m6" style="display: grid;grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+                    grid-gap: 10px; justify-content:space-around ;align-items: center;">
                         <span>
                             <label>
                               <input name="fclass" value="Buisness" type="checkbox" <%=ts[0]%>   />
@@ -181,14 +193,14 @@
                         </span>
                     </div>
     
-                    <div class="col s3">
+                    <div class="col s12 m6">
                         <div class="input-field">
                             <i class="material-icons prefix">access_time</i>
                             <input id="icon_sourcetime" value="<%=data.sourcetiming%>" name="sourcetime" type="text" class="timepicker">
                             <label for="icon_sourcetime">Source timing</label>
                         </div>
                     </div>
-                    <div class="col s3">
+                    <div class="col s12 m6">
                         <div class="input-field">
                             <i class="material-icons prefix">access_time</i>
                             <input id="icon_destime" value="<%=data.destinationtiming%>"name="destime" type="text" class="timepicker">
@@ -198,7 +210,8 @@
                 </div>
     
                 <div class="row">
-                <div class="col s12" style="display: flex;flex-direction: row;justify-content:space-around ;align-items: center;">
+                <div class="col s12" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+                grid-gap: 10px; justify-content:space-around ;align-items: center;">
                     <span>
                         <label>
                           <input name="fdays" value="Sunday" type="checkbox" <%= data.days.includes('Sunday')?'checked':'' %> />

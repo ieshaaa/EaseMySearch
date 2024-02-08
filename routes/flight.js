@@ -83,8 +83,10 @@ router.get('/showpicture',function(req,res){
 });
 
 router.post('/addnewrecord',upload.single('logo'),function(req,res){
+  console.log('FILE hello1');
   console.log('BODY:',req.body)
   console.log('FILE:',req.file)
+  console.log('FILE hello2');
 
 
   var fclass;
@@ -121,12 +123,12 @@ router.post('/editdeleterecord',function(req,res){
   var fclass;
   var fdays;
   if(Array.isArray(req.body.fclass)){
- fclass=req.body.fclass.join("#")}
+ fclass=req.body.fclass.join(",")}
  else{
   fclass=req.body.fclass;
  }
   if(Array.isArray(req.body.fdays)){
- fdays=req.body.fdays.join("#")}
+ fdays=req.body.fdays.join(",")}
  else{
   fdays=req.body.fdays;
  }

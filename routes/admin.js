@@ -13,8 +13,10 @@ router.get('/adminlogout', function(req, res, next) {
   res.render('loginflight',{msg:''});
 });
 router.post('/checkadminlogin', function(req, res, next) {
-  pool.query("select * from admins where (emailid=? or mobileno=?) and password=?",[req.body.emailid,req.body.emailid,req.body.password],function(error,result){
+  console.log('Reached /admin/checkadminlogin route');
+  pool.query("select * from admin where (emailid=? or mobileno=?) and password=?",[req.body.emailid,req.body.emailid,req.body.password],function(error,result){
     if(error){
+      console.log("error", error);
         res.render("loginflight",{msg:"Server Error....."})
     }
     else{

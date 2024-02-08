@@ -18,17 +18,23 @@
     /* height: 100vh; */
 }
 .root{
-  width: 85%;
+  max-width: 850px;
+  width: 90%;
     height: 100%;
     background: #f1f2f6;
-    padding: 55px;
+    padding: 25px;
+    padding-bottom: 60px;
     justify-content: center;
-    overflow-x: auto;
+    overflow-x: hidden;
     z-index: 10000000;
+    scrollbar-width: thin;
+    scroll-behavior: smooth;
+    scrollbar-color: #078888 transparent;
+
 }
 .heading{
     color: #078888;
-    font-size: 36px;
+    font-size: 30px;
     font-weight: bold;
     font-family: 'Tiro Telugu', serif;
     display: flex;
@@ -151,7 +157,8 @@
                   </div>
                 </div>
 
-                <div class="col s12 m6" style="display: flex;flex-direction: row;justify-content:space-around ;align-items: center;">
+                <div class="col s12 m6" style="display: grid;grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+                grid-gap: 10px;justify-content:space-around ;align-items: center;">
                     <span>
                         <label>
                           <input name="fclass" value="Buisness" type="checkbox" />
@@ -189,7 +196,8 @@
             </div>
 
             <div class="row">
-            <div class="col s12" style="display: flex;flex-direction: row;justify-content:space-around ;align-items: center; flex-wrap: wrap;">
+            <div class="col s12" style="display: grid;grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            grid-gap: 10px; justify-content:space-around ;align-items: center; flex-wrap: wrap;">
                 <span>
                     <label>
                       <input name="fdays" value="Sunday" type="checkbox" />

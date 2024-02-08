@@ -2,7 +2,31 @@
   body{
     overflow-y: hidden;
   }
+  @media only screen and (max-width: 600px) {
+    .brand-logo {
+      font-size: 1.9rem !important; /* Important to override inline styles */
+      float: right !important;
+    }
+
+    nav {
+      min-height: 60px !important; /* Important to override inline styles */
+    }
+  }
+
+             
+  #fullscreen-image {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover; /* Maintain aspect ratio while covering the entire viewport */
+    z-index: -100;
+  }
+
+
 </style>
+
 <html>
     <head>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&family=Tiro+Telugu&display=swap" rel="stylesheet">
@@ -40,32 +64,39 @@
         $('.sidenav').sidenav();
       });</script>
             
-            <style>
-              /* body {
-                overflow-y: hidden;
-              } */
-              #fullscreen-image {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover; /* Maintain aspect ratio while covering the entire viewport */
-    z-index: -100;
-  }
-            </style>
+            <script>
+               document.addEventListener('DOMContentLoaded', function() {
+    var brandLogo = document.querySelector('.brand-logo');
+
+    function updateLogoClass() {
+      if (window.innerWidth <= 600) {
+        brandLogo.classList.add('right');
+      } else {
+        brandLogo.classList.remove('right');
+      }
+    }
+
+    // Initial update
+    updateLogoClass();
+
+    // Update on window resize
+    window.addEventListener('resize', updateLogoClass);
+  });
+            </script>
+           
     </head>
     <body>
         <nav style="background-color: rgba(14, 127, 188, 0.911); z-index: 1000; font-family:sans-serif;">
             <div class="nav-wrapper">
-              <a href="#!" class="brand-logo left"><i class="material-icons" style="font-size:38;margin-left:25px">flight_takeoff</i>EaseMySearch</a>
+              <a href="#!" class="brand-logo  "><i class="material-icons" style="font-size:38;margin-left:25px">flight_takeoff</i>EaseMySearch</a>
+              <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
               <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="/flight/flightenquiry" target="mw">Add Flights</a></li>
                 <li><a href="/flight/displayall" target="mw">Flights List</a></li>
                 <li><a href="/admin/adminlogout">Logout</a></li>
           
                 <li style="display:flex;align-items:center;justify-content:center;"><div><b><%=result.adminname %></b></div><br>
-               <div> <img src="/images/<%=result.picture %>" style="margin-left: 10px;margin-right: 25px; width: 40px; border-radius:20px; " alt="admin" srcset=""></div></li>
+               <div> <img src="/images/user.png" style="margin-left: 10px;margin-right: 25px; width: 40px; border-radius:20px; " alt="admin" srcset=""></div></li>
               </ul>
             </div>
             <div>
@@ -73,6 +104,15 @@
            <!-- hello -->
             </div>
           </nav>
+          <ul class="sidenav right" id="mobile-demo">
+            <li><a href="/flight/flightenquiry" target="mw">Add Flights</a></li>
+            <li><a href="/flight/displayall" target="mw">Flights List</a></li>
+            <li><a href="/admin/adminlogout">Logout</a></li>
+      
+            <li style="display:flex;align-items:center;justify-content:center;"><div><b><%=result.adminname %></b></div><br>
+              <div> <img src="/images/user.png" style="margin-left: 10px;margin-right: 25px; width: 40px; border-radius:20px; " alt="admin" srcset=""></div></li>
+
+          </ul>
           <iframe  frameborder="0" style="height: 100%; width:100%;"    name="mw"></iframe>
 
 

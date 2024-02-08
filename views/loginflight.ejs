@@ -1,55 +1,81 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Oswald:wght@600&family=Patua+One&family=Roboto:ital,wght@1,300&family=Tiro+Telugu&family=Yeseva+One&display=swap');
 
-*{
+/* *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-}
+} */
 
 body{
-    font-family:'Lato', sans-serif; ;
+    font-family:'Lato', sans-serif; 
+    box-sizing: border-box;
+    overflow-x: hidden;
+    margin: 0;
 }
 .maincontainer{
+    display: flex;
+        align-items: center;
+        justify-content: center;
+        /* position: absolute;  */
+   /* top: 40%;
+   transform: translateY(-40%); */
     width: 100vw;
-    height:100vh;
+    height:calc(100vh - 70px);
     background-image: url("/images/bg2.avif");
     background-position: center;
     background-repeat: no-repeat;
    background-size: cover;
+   /* display: flex;
+   justify-content: center; */
+
 }
 
 .navbar-fixed{
-    background-color: rgba(255, 255, 255, 0.522);
+    background-color: rgba(18, 79, 111, 0.267);
+        box-shadow: 2px 2px 5px #063554;
+        display: flex;
+        min-height: 70px;
+        align-items: center;
+/* opacity: calc(10px); */
+
 }
 
 
 
 .container{
-    box-sizing: border-box;
-   margin:  0 auto;
-    position: absolute; 
-   top: 50%;
-   right: 40%;
-   transform: translateY(-50%);
-   padding: 10px 40px;
+    /* width: 70%;
+        max-width: 200px;    */
+         box-sizing: border-box;
+             
+   margin: 20px auto;
+        padding: 30px;
    background-color: #ffffff85 ;
    border-radius: 8px; 
    box-shadow: 2px 2px 5px #063554;
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
    
+}
+.heading{
+    margin-top: 20px;
 }
 
 .heading h1{
-    font-size: 3rem;
+    font-size: 2.5rem;
     color: #212121;
     font-weight: 500;
     text-align: center;
     font-weight: bold;
+    margin: 10px;
+
 }
 .heading p{
     font-size: 2rem;
     color: #555;
     text-align: center;
+    margin: 5px;
 }
 .main{
     margin: 20px 0;
@@ -67,6 +93,9 @@ body{
     font-size: 1rem;
     margin-top: 4px;
 
+}
+nav .brand-logo{
+    color: #212121;
 }
 
 </style>
@@ -95,11 +124,13 @@ body{
         </head>
     
         <body>
+            <div class="nav">
+            <nav class="navbar-fixed">
+                <a href="#!" class="brand-logo left" style="color: black;"><i class="material-icons" style="font-size:42px;margin-left:25px">flight_takeoff</i>EaseMySearch</a>
+            </nav> 
+        </div>
             <div class="maincontainer">
-                <nav class="navbar-fixed">
-                    <a href="#!" class="brand-logo left"><i class="material-icons" style="font-size:38;margin-left:25px">flight_takeoff</i>EaseMySearch</a>
-                </nav>
-                <div class="container" style="width: 30rem;">
+                <div class="container" style="width: 80%; max-width: 500px; max-height: 500px;">
                  
                     
                     <div class="heading">
@@ -122,7 +153,7 @@ body{
                          <div class="col s12">
                              <div class="input-field">
                                  <i class="material-icons prefix">lock</i>
-                                 <input id="icon_fpass" name="password" type="password" class="validate">
+                                 <input id="icon_fpass" name="password" type="password" class="validate" autocomplete="current-password">
                                  <label for="icon_fpass">Password</label>
                              </div>
                          </div>
